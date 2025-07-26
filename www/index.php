@@ -8,13 +8,57 @@
 </head>
 <body>
 
-<div style="width: 400px; margin: 25px auto; position: relative">
-    Coucou bonne chance
-</div>
+    <main class="form-container">
+        <h1 class="form-title">Contactez l’agence</h1>
 
-<div style="width: 400px; height: 80px; margin: 25px auto; position: relative">
-    <iframe src="https://open.spotify.com/embed/track/1GOC5a3Ob53M5tU40XcXfn?utm_source=oembed" style="top: 0; left: 0; width: 100%; height: 100%; position: absolute; border: 0;" allowfullscreen allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture;"></iframe>
-</div>
+        <form class="form-layout" method="POST">
 
+            <div class="column-left">
+                <section class="form-section">
+                    <h2>Vos coordonnées</h2>
+
+                    <div class="field-group choices">
+                        <label><input type="radio" name="genre" value="mme" required> Mme</label>
+                        <label><input type="radio" name="genre" value="m" required> M</label>
+                    </div>
+
+                    <div class="field-group input-row">
+                        <input type="text" name="nom" placeholder="Nom" required>
+                        <input type="text" name="prenom" placeholder="Prénom" required>
+                    </div>
+
+                    <input type="email" name="email" placeholder="Adresse mail" required>
+                    <input type="text" name="telephone" placeholder="Téléphone">
+                </section>
+
+                <section class="form-section">
+                    <h2>Disponibilités pour une visite</h2>
+
+                    <div class="field-group availability-row">
+                        <button type="button" class="button button-secondary">Ajouter dispo</button>
+                    </div>
+
+                    <ul class="availability-list"></ul>
+                </section>
+            </div>
+
+            <div class="column-right">
+                <section class="form-section">
+                    <h2>Votre message</h2>
+
+                    <div class="field-group choices">
+                        <label><input type="radio" name="objet" value="visite" required> Demande de visite</label>
+                        <label><input type="radio" name="objet" value="rappel"> Être rappelé.e</label>
+                        <label><input type="radio" name="objet" value="photos"> Plus de photos</label>
+                    </div>
+
+                    <textarea name="message" placeholder="Votre message" required></textarea>
+                </section>
+
+                <button type="submit" class="button button-primary">Envoyer</button>
+            </div>
+
+        </form>
+    </main>
 </body>
 </html>
