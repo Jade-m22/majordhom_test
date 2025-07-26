@@ -18,22 +18,26 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $objet = $_POST["objet"] ?? '';
     $message = clean($_POST["message"] ?? '');
 
+    $disponibilites = $_POST["dispos"] ?? [];
+    $disponibilite = implode(', ', array_map('clean', $disponibilites));
+
     $errors = [];
 
-    // Validation email
     if (!preg_match("/^[\w\.-]+@[\w\.-]+\.[a-z]{2,}$/i", $email)) {
         $errors[] = "Email invalide.";
     }
 
-    // Validation téléphone
     if (!empty($telephone) && !preg_match("/^(\+?\d{1,3})?[0-9\s\-\.]{6,20}$/", $telephone)) {
         $errors[] = "Téléphone invalide.";
     }
 
     if (empty($errors)) {
-        $stmt = $pdo->prepare("INSERT INTO formulaire (genre, nom, prenom, email, telephone, objet, message) 
-                               VALUES (?, ?, ?, ?, ?, ?, ?)");
-        $stmt->execute([$genre, $nom, $prenom, $email, $telephone, $objet, $message]);
+        $stmt = $pdo->prepare("INSERT INTO formulaire 
+            (genre, nom, prenom, email, telephone, objet, message, disponibilite) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->execute([
+            $genre, $nom, $prenom, $email, $telephone, $objet, $message, $disponibilite
+        ]);
         echo "Message envoyé.";
     } else {
         foreach ($errors as $error) {
