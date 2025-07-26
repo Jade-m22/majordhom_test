@@ -11,7 +11,7 @@
     <main class="form-container">
         <h1 class="form-title">Contactez l’agence</h1>
 
-        <form class="form-layout" method="POST">
+        <form class="form-layout" method="POST" action="process_form.php">
 
             <div class="column-left">
                 <section class="form-section">
@@ -35,6 +35,32 @@
                     <h2>Disponibilités pour une visite</h2>
 
                     <div class="field-group availability-row">
+                        <select name="jour">
+                            <option value="">Jour</option>
+                            <option value="Lundi">Lundi</option>
+                            <option value="Mardi">Mardi</option>
+                            <option value="Mercredi">Mercredi</option>
+                            <option value="Jeudi">Jeudi</option>
+                            <option value="Vendredi">Vendredi</option>
+                            <option value="Samedi">Samedi</option>
+                            <option value="Dimanche">Dimanche</option>
+                        </select>
+
+                        <select name="heure">
+                            <option value="">Heure</option>
+                            <?php for ($h = 7; $h <= 20; $h++): ?>
+                                <option value="<?= $h ?>"><?= $h ?>h</option>
+                            <?php endfor; ?>
+                        </select>
+
+                        <select name="minute">
+                            <option value="">Minute</option>
+                            <option value="00">00</option>
+                            <option value="15">15</option>
+                            <option value="30">30</option>
+                            <option value="45">45</option>
+                        </select>
+
                         <button type="button" class="button button-secondary">Ajouter dispo</button>
                     </div>
 
@@ -60,5 +86,42 @@
 
         </form>
     </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const btn = document.querySelector('.button-secondary');
+            const list = document.querySelector('.availability-list');
+            const form = document.querySelector('form');
+
+            btn.addEventListener('click', () => {
+                const jour = form.querySelector('[name="jour"]').value;
+                const heure = form.querySelector('[name="heure"]').value;
+                const minute = form.querySelector('[name="minute"]').value;
+
+                if (!jour || !heure || !minute) return;
+
+                const text = `${jour} à ${heure.padStart(2, '0')}h${minute.padStart(2, '0')}`;
+
+                const li = document.createElement('li');
+                li.textContent = text;
+
+                const removeBtn = document.createElement('button');
+                removeBtn.type = 'button';
+                removeBtn.textContent = '×';
+                removeBtn.style.marginLeft = '10px';
+                removeBtn.onclick = () => li.remove();
+
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'dispos[]';
+                input.value = text;
+
+                li.appendChild(removeBtn);
+                li.appendChild(input);
+                list.appendChild(li);
+            });
+        });
+    </script>
+
 </body>
 </html>
