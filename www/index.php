@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/style.css">
     <title>Formulaire de contact</title>
 </head>
 <body>
@@ -61,7 +62,7 @@
                             <option value="45">45</option>
                         </select>
 
-                        <button type="button" class="button button-secondary">Ajouter dispo</button>
+                        <button type="button" class="button button-secondary">AJOUTER <br>DISPO</button>
                     </div>
 
                     <ul class="availability-list"></ul>
@@ -81,7 +82,7 @@
                     <textarea name="message" placeholder="Votre message" required></textarea>
                 </section>
 
-                <button type="submit" class="button button-primary">Envoyer</button>
+                <button type="submit" class="button button-primary">ENVOYER</button>
             </div>
 
         </form>
