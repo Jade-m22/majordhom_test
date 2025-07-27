@@ -1,6 +1,32 @@
-@media (max-width: 768px) {
+/* petits écrans */
+@media (max-width: 599px) {
+  .form-container {
+    width: 100%;
+    max-width: 100%;
+    padding: 2rem 2rem; /* marges droite/gauche */
+    box-sizing: border-box;
+  }
+}
+
+/* tablettes */
+@media (min-width: 600px) and (max-width: 1023px) {
+  .form-container {
+    width: 100%;
+    max-width: 90%;
+    padding: 2rem;
+    box-sizing: border-box;
+  }
+}
+
+/* jusqu’à 1299px inclus */
+@media (max-width: 1299px) {
   .form-layout {
     flex-direction: column;
+  }
+
+  .column-left,
+  .column-right {
+    width: 100%;
   }
 
   .button-primary {
@@ -10,9 +36,49 @@
 
   .availability-row {
     flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  .availability-row select {
+    flex: 1 1 30%;
+    min-width: 90px;
   }
 
   .button-secondary {
     width: 100%;
+    text-align: center;
+    margin-top: 0.5rem;
+  }
+
+  .field-group.choices {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .field-group.choices label {
+    font-size: 1rem;
+    white-space: nowrap;
+  }
+}
+
+/* desktop */
+@media (min-width: 1300px) {
+  .form-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 3rem;
+  }
+
+  .form-layout {
+    flex-direction: row;
+    gap: 2rem;
+  }
+
+  .column-left,
+  .column-right {
+    flex: 1;
   }
 }
