@@ -126,7 +126,7 @@
     </script>
 
     <!-- affichage popup via get -->
-    <div id="popup-message"></div>
+    <div class="popup" id="popup-message"></div>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const params = new URLSearchParams(window.location.search);
