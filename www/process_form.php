@@ -5,7 +5,7 @@ try {
     die("Erreur de connexion : " . $e->getMessage());
 }
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
+if ($_SERVER["REQUEST_METHOD"] === "POST" && !empty($_POST["email"])) {
     function clean($data) {
         return htmlspecialchars(trim($data));
     }
@@ -17,13 +17,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $telephone = clean($_POST["telephone"] ?? '');
     $objet = $_POST["objet"] ?? '';
     $message = clean($_POST["message"] ?? '');
-
     $disponibilites = $_POST["dispos"] ?? [];
     $disponibilite = implode(', ', array_map('clean', $disponibilites));
 
     $errors = [];
-
-    if (!preg_match("/^[\w\.-]+@[\w\.-]+\.[a-z]{2,}$/i", $email)) {
+    // Validations via regexx
+    if (!empty($email) && !preg_match("/^[\w\.-]+@[\w\.-]+\.[a-z]{2,}$/i", $email)) {
         $errors[] = "Email invalide.";
     }
 
@@ -31,6 +30,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $errors[] = "Téléphone invalide.";
     }
 
+    $feedback = '';
+    $type = '';
+
+    // affiche erreurs si présentes
     if (empty($errors)) {
         $stmt = $pdo->prepare("INSERT INTO formulaire 
             (genre, nom, prenom, email, telephone, objet, message, disponibilite) 
@@ -38,11 +41,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $stmt->execute([
             $genre, $nom, $prenom, $email, $telephone, $objet, $message, $disponibilite
         ]);
-        echo "Message envoyé.";
+        $feedback = "Votre message a bien été envoyé.";
+        $type = "success";
     } else {
-        foreach ($errors as $error) {
-            echo "<p style='color:red;'>$error</p>";
-        }
+        $feedback = implode(' ', $errors);
+        $type = "error";
     }
+
+    // Redirection vers index.php avec les infos en GET
+    header("Location: index.php?feedback=" . urlencode($feedback) . "&type=" . $type);
+    exit;
 }
-?>

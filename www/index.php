@@ -88,6 +88,7 @@
         </form>
     </main>
 
+    <!-- Script JS pour gérer les dispo -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const btn = document.querySelector('.button-secondary');
@@ -124,5 +125,25 @@
         });
     </script>
 
+    <!-- affichage popup via get -->
+    <div id="popup-message"></div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const params = new URLSearchParams(window.location.search);
+            const message = params.get('feedback');
+            const type = params.get('type');
+
+            if (message && type) {
+                const popup = document.getElementById('popup-message');
+                popup.textContent = message;
+                popup.classList.add('show', type);
+                setTimeout(() => {
+                    popup.classList.remove('show', type);
+                    history.replaceState({}, document.title, window.location.pathname);
+                }, 4000);
+            }
+        });
+        </script>
+    
 </body>
 </html>
