@@ -31,4 +31,12 @@ body::before {
   position: relative;
   z-index: 1;
   box-sizing: border-box;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.form-container.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
