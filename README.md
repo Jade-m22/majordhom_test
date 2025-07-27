@@ -16,7 +16,7 @@
 1. Cloner ce dépôt :
 
     ```bash
-    git clone git@github.com:Jade-m22/majordhome_test.git
+    git clone git@github.com:Jade-m22/majordhom_test.git
     cd majordhome_test
     ```
 
