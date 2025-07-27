@@ -1,0 +1,26 @@
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background: url('salon.png') no-repeat center fixed;
+  background-size: cover;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 0;
+}
+
+.form-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 3rem;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: relative;
+  z-index: 1;
+}

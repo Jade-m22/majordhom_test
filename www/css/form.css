@@ -1,0 +1,124 @@
+input[type="text"],
+input[type="email"],
+textarea,
+select {
+  width: 100%;
+  padding: 0.9rem 1.2rem;
+  border: none;
+  border-radius: 50px;
+  font-size: 1rem;
+  background-color: #fff;
+  box-sizing: border-box;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+}
+
+textarea {
+  border-radius: 30px;
+  resize: vertical;
+  min-height: 150px;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #bbb;
+}
+
+.field-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.input-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.input-row input {
+  flex: 1;
+  margin-bottom: 1rem;
+}
+
+.field-group.choices label {
+  color: #fff;
+  font-weight: normal;
+  margin-bottom: 1rem;
+}
+
+input[type="radio"] {
+  margin-right: 0.4rem;
+}
+
+.button {
+  border: none;
+  padding: 0.8rem 3rem;
+  font-weight: bold;
+  border-radius: 50px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.button-primary {
+  background-color: #fdb515;
+  color: white;
+  align-self: flex-end;
+}
+
+.button-secondary {
+  background-color: #4d1ee6;
+  color: #fff;
+  line-height: 1.1;
+  height: 48px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  white-space: normal;
+}
+
+.availability-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: nowrap;
+  margin-bottom: 1rem;
+}
+
+.availability-row select {
+  width: auto;
+  min-width: 100px;
+  padding: 0.6rem 1.2rem;
+  border-radius: 50px;
+  border: none;
+  background: white;
+  font-size: 0.95rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  appearance: none;
+}
+
+.availability-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+}
+
+.availability-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #e8e8e8;
+  border-radius: 30px;
+  padding: 0.6rem 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.availability-list button {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: #555;
+  margin-left: 1rem;
+  cursor: pointer;
+}
