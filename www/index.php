@@ -88,9 +88,12 @@
         </form>
     </main>
 
-    <!-- Script JS pour gérer les dispo -->
+    <!-- Script JS pour gérer les dispo + effet apparition formulaire -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            const formContainer = document.querySelector('.form-container');
+                formContainer.classList.add('visible');
+
             const btn = document.querySelector('.button-secondary');
             const list = document.querySelector('.availability-list');
             const form = document.querySelector('form');
@@ -144,6 +147,6 @@
             }
         });
         </script>
-    
+
 </body>
 </html>
